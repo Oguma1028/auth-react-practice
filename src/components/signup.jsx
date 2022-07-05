@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import { firebaseConfig } from "../firebase";
 
 const SingUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    const { email, password } = event.target.elements;
+    firebaseConfig.createUserWithEmailAndPassword(email.value, password.value);
   };
 
   const [email, setEmail] = useState("");
